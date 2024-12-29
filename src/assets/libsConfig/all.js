@@ -38,7 +38,7 @@ const toolbarOptions = [
     },
 
     theme: 'snow',
-    placeholder: 'insira um texto',
+    placeholder: 'Insira um texto',
   };
 
   const quill = new Quill('#editor', opt);

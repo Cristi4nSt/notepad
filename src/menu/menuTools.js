@@ -1,6 +1,5 @@
 const fs = require('fs');
-const crypto = require('crypto-js');
-const { dialog, app } = require('electron');
+const { dialog } = require('electron');
 
 module.exports.saveFile = async (StringForTxt) => {
     await dialog.showSaveDialog({
@@ -11,14 +10,14 @@ module.exports.saveFile = async (StringForTxt) => {
             },
         ],
     }).then((r) => {
+        fs.writeFile(r.filePath, `${StringForTxt.toString()}`, function (err) {
+            if (err) console.error(err);
+        });
+
         if (r.canceled) dialog.showMessageBox({
             message: 'O salvamento do arquivo foi cancelado.',
             buttons: ['é foda'],
             type: 'warning',
-        });
-        
-        fs.writeFile(r.filePath, `${StringForTxt.toString()}`, function (err) {
-            if (err) console.error(err);
         });
     });
 };

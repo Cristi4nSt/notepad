@@ -9,7 +9,9 @@ document.getElementById('btnLogin').addEventListener('click', () => {
     const file = fs.readFileSync(__dirname.replace('\\src\\pages', '\\unname.txt')).toString();
 
     const decr = crypto.AES.decrypt(file, 'Ha7vWAzxAe2VPEv5s/SrWsFwATIWNxFHYp+eEcWnyHI=');
-    const descPssword = decr.toString(crypto.enc.Utf8);
+    const descPssword = decr.toString(crypto.enc.Utf8); // a senha é "teste"
+
+    console.log(descPssword);
     
     if (pssword.value == descPssword) {
         modal.classList.remove('animate__fadeInLeft');
